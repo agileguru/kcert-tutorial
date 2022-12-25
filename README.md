@@ -37,15 +37,15 @@ A easy to follow tutorial to have an automatic https cert created for your publi
     
 1. **Create ingress**
     * > kubectl create -f ingress/kcert-demo.yaml
-    * > kubectl get secrets -n kcert 
+    * > kubectl get secrets -A 
         ```
         NAME                     TYPE                                  DATA   AGE
-        demo-doit-research-com   kubernetes.io/tls                     2      15h
+        kcert-example-com        kubernetes.io/tls                     2      15h
         ```
 
 1. **Check Your app**
-    * Open Your App in the browser
-    * Automatic redirect to https
+    * Open Your App in the browser ( https://kcert.example.com )
+    * Should show valid certificate :) 
     * Certificate issued by https://letsencrypt.org/
 
 
