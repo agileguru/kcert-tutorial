@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kcert-ingress
+  namespace: invalid-namespace # This should be a valid namespace 
+  labels:
+    kcert.dev/ingress: "managed"
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - kcert.example.com # Change the word example.com to your domain name
+    secretName: kcert-example-com # Change the word example-com to your domain name
+  rules:
+  - host: kcert.example.com # Change the word example.com to your domain name
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: invalid-service # Should be a valid service
+            port: 
+                number: 80 # this should be a valid port of the service           
